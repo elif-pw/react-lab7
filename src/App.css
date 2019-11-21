@@ -15,8 +15,18 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: "Century Schoolbook L";
 }
-
+body{
+  font-family: "Century Schoolbook L";
+}
 .App-link {
   color: #09d3ac;
+}
+
+.active{
+  color: #09d3ac;
+}
+.notactive{
+  color: darkred;
 }
