@@ -35,14 +35,15 @@ class App extends Component {
 
     onChangeEvent(event) {
         this.setState({[event.target.name]: event.target.value});
-      }
+    }
 
     onEmailPhoneChange(event){
         this.setState({[event.target.name]: event.target.value});
-          }
+        this.state.age < 18 ?  this.checkvalidityPhone(event.target.value) :  this.checkvalidityEmail(event.target.value);
+    }
 
     generateid() {
-         (Date.now().toString(36) + Math.random().toString(36).substr(1, 24)).toLowerCase()
+        (Date.now().toString(36) + Math.random().toString(36).substr(1, 24)).toLowerCase()
     }
 
     checkvalidityPhone(phone){
@@ -60,10 +61,6 @@ class App extends Component {
     }
 
     handleFormSubmit(e) {
-        const data=new FormData(e.target);
-        data.get("age")<18? this.checkvalidityPhone(data.get("parentphone")):
-            this.checkvalidityEmail(data.get("email"));
-
         e.preventDefault();
         if ( this.state.validPhone===true  || this.state.validEmail===true)  {
             this.setState({id: this.generateid()})
@@ -163,7 +160,7 @@ class App extends Component {
                             </fieldset>
                             : ''}
                         <br/>
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={this.state.validPhone || this.state.validEmail ? '' :"disabled"}>Submit</button>
                         <br/>
                     </fieldset>
                 </form>
